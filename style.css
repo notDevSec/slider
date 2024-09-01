@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(to left top, #031a9a, #8b53ff);
+  background: linear-gradient(to left top, #ff9100, #d64f00);
 }
 
 .wrapper {
@@ -48,6 +48,9 @@ body {
   grid-auto-flow: column;
   grid-auto-columns: calc((100% / 3) - 12px);
   gap: 16px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: 0;
   overflow: hidden;
 }
 
@@ -57,12 +60,26 @@ body {
   justify-content: center;
 }
 
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
 .carousel.dragging .card {
   cursor: grab;
   user-select: none;
 }
 
 .card {
+  scroll-snap-align: start;
   height: 342px;
   background-color: white;
   border-radius: 8px;
@@ -71,13 +88,14 @@ body {
   align-items: center;
   flex-direction: column;
   padding-bottom: 15px;
+
   cursor: pointer;
 }
 
 .card .img {
   width: 148px;
   height: 148px;
-  background: #8b53ff;
+  background: #ff7300;
   border-radius: 50%;
 }
 
